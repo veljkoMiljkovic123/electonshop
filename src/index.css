@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities{
+    .heading{
+        @apply text-xl md:text-2xl 2xl:text-5xl text-mainBlue
+    }
+
+    .flex-center{
+        @apply flex justify-center items-center;
+    }
+
+    .badge{
+        @apply bg-mainYellow text-whiteTextColor  w-[20px] h-[20px] flex-center justify-center rounded-full;
+    }
+}
