@@ -22,7 +22,7 @@ function NavbarComponent() {
         <div className='container mx-auto flex flex-col lg:flex-row  items-center justify-between h-full gap-5'>
 
         {/* logo */}
-        <img src={logo} alt="logo" />
+        <Link to={'/'}><img src={logo} alt="logo" /></Link>
         
         {/* searc bar */}
         <div className='bg-whiteTextColor rounded-[20px]'>
@@ -33,7 +33,7 @@ function NavbarComponent() {
         {/* Links */}
         <div>
             <ul className='flex-center gap-5'>
-                <li className='flex-center'>
+                <li className='flex-center text-whiteTextColor'>
                    
                     <SignedOut>
                         <SignInButton />
