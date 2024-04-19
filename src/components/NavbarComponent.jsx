@@ -12,8 +12,11 @@ import { ImRoad } from 'react-icons/im';
 //clerk
 import { SignInButton, SignedOut, SignedIn, UserButton } from '@clerk/clerk-react';
 import CategoryComponent from './CategoryComponent';
+import { useSelector } from 'react-redux';
 
 function NavbarComponent() {
+
+    const {totalProduct} = useSelector(state=>state.cartStore)
 
 
   return <div className=''>
@@ -60,7 +63,7 @@ function NavbarComponent() {
                 <li className='flex-center gap-2'>
                     <div className='flex-center'>
                     <CiShoppingCart size={25} color='white'/>
-                    <span className='badge'>0</span>
+                    <span className='badge'>{totalProduct}</span>
                     </div>
                     <Link to={'/cart'} className='text-whiteTextColor'>Cart</Link>
                 </li>

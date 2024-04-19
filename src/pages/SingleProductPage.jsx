@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import ProductsService from "../services/productsService";
 import LoaderComponent from "../components/LoaderComponent";
 import { Rating } from "@mui/material";
@@ -7,11 +7,18 @@ import { Rating } from "@mui/material";
 //icons
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
+import { CiHeart } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { saveInCartAction } from "../store/cartSlice";
+
 
 function SingleProductPage() {
   const [singleProduct, setSingleProduct] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
+
+  //dispatch
+  const dispatch = useDispatch();
 
   //1.Uzmi id
   const { productId } = useParams();
@@ -29,6 +36,10 @@ function SingleProductPage() {
 
   function handleCurrentImage(index) {
     setCurrentImage(index);
+  }
+  //handleAddToCart
+  function handleAddToCart(){
+    dispatch(saveInCartAction(singleProduct))
   }
 
   return (
@@ -85,11 +96,18 @@ function SingleProductPage() {
             <p className="text-[18px] text-blackTextColor">
               Hurry up! only {singleProduct.stock} product left in stock!
             </p>
-            <p className="text-[20px] text-blackTextColor">Total price:<span className="font-bold"> ${singleProduct.price}</span></p>
+            <p className="text-[20px] te xt-blackTextColor">Total price:<span className="font-bold"> ${singleProduct.price}</span></p>
+            {/* Add favorite button */}
+              <div className="flex items-center mt-12 gap-5">
+                <Link to='/cart' className="bg-mainYellow text-white px-6 py-3 rounded-xl shadow-lg text-[20px]" onClick={handleAddToCart}>Add to Cart</Link>
+                <Link to='/favorite' className="bg-lightBlue px-6 py-3 rounded-xl shadow-lg border border-black" >
+                  <CiHeart size={28} />
+                </Link>
+              </div>
           </div>
         </div>
       ) : (
-        <LoaderComponent />
+        <div className="flex"><LoaderComponent /></div>
       )}
     </div>
   );

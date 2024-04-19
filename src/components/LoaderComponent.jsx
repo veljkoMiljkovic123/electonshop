@@ -1,6 +1,6 @@
 function LoaderComponent() {
     return (
-      <div
+      <div className=""
         style={{
           display: 'inline-block',
           width: '64px',
@@ -9,6 +9,7 @@ function LoaderComponent() {
           borderTopColor: '#007bff',
           borderRadius: '50%',
           animation: 'spinner 1s linear infinite',
+          margin:'3rem auto'
         }}
       ></div>
     );
