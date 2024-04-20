@@ -9,7 +9,7 @@ function CardProductComponent({ product,activeView }) {
         <img
           src={product.thumbnail}
           alt={product.title}
-          className={activeView==="listView" ? "w-[100px] h-[100px] object-cover":"w-full h-[200px] object-cover"}
+          className={activeView==="listView" ? "w-[100px] h-[100px] object-cover rounded-md":"w-full h-[200px] object-cover rounded-md"}
         />
         <div className="absolute inset-0 bg-black/45 hover:bg-transparent transition-all rounded-lg"></div>
       </div>
