@@ -2,8 +2,8 @@ import React from 'react'
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useDispatch } from 'react-redux';
-import { deleteItemCartAction } from '../store/cartSlice';
-function CartItemComponentt({item}) {
+import { deleteItemCartAction, setPriceHandler } from '../store/cartSlice';
+function CartItemComponentt({item,index}) {
     const dispatch = useDispatch()
 
     function removeItemHandler(){
@@ -24,9 +24,11 @@ function CartItemComponentt({item}) {
         <p>${item.price}</p>
     </div>
     <div className='flex items-center'>
-        <button className='px-2 py-1 bg-slate-300 text-[18px]'>+</button>
+        <button className='px-2 py-1 bg-slate-300 text-[18px]'
+        onClick={() => dispatch(setPriceHandler({increment:1, index}))}>+</button>
         <span className='px-2 py-1 bg-slate-300 text-[18px]'>{item.count}</span>
-        <button className='px-2 py-1 bg-slate-300 text-[18px]'>-</button>
+        <button className='px-2 py-1 bg-slate-300 text-[18px]'
+        onClick={()=>dispatch(setPriceHandler({increment:-1,index}))}>-</button>
     </div>
     <div>
         {/* cartTotal */}
