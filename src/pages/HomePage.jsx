@@ -3,7 +3,7 @@ import ProductsService from "../services/productsService";
 import { useDispatch, useSelector } from "react-redux";
 import { saveAllProductsAction } from "../store/productsSlice";
 import CardProductComponent from "../components/CardProductComponent";
-
+import { motion } from "framer-motion";
 //icons
 import { FaList } from "react-icons/fa";
 import { MdGridView } from "react-icons/md";
@@ -47,11 +47,18 @@ function HomePage() {
       </div>
 
       {/* Our Products */}
-      <div className={activeView === "listView" ? "grid grid-cols-1 gap-5" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-center gap-5 mt-5"}>
-        {allProducts.map((product, i) => {
-          return <CardProductComponent activeView={activeView} product={product} key={product.id} />;
-        })}
-      </div>
+      <motion.div
+  initial={{ opacity: 0, scale: 0.5 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5 }}
+>
+  <div className={activeView === "listView" ? "grid grid-cols-1 gap-5" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-center gap-5 mt-5"}>
+    {allProducts.map((product, i) => {
+      return <CardProductComponent activeView={activeView} product={product} key={product.id} />;
+    })}
+  </div>
+</motion.div>
+
     </main>
   );
 }

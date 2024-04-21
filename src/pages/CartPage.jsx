@@ -34,11 +34,11 @@ function CartPage() {
 
               {/* body content */}
               <div>
-                {cart.item>0?cart.map((item, index) => {
+                {cart.length > 0?(cart.map((item, index) => {
                   return (
                     <CartItemComponentt key={index} item={item} index={index} />
                   );
-                }):<p className="text-center text-2xl font-bold mt-12">Cart is empty</p>}
+                })):(<p className="text-center text-2xl font-bold mt-12">Cart is empty</p>)}
               </div>
             </div>
             {/* right side */}
@@ -50,7 +50,7 @@ function CartPage() {
 
               {/* coupons */}
               <div className="flex flex-col gap-3 mt-10">
-                <label>Insert coupon for 50%</label>
+                <label>Insert coupon "alphacode" for 50%</label>
                 <input
                   type="text"
                   placeholder="Insert coupon"

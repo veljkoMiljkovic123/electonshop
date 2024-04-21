@@ -81,5 +81,6 @@ function subTotal(arrayCart){
     },0)
 }
 
+
 export const {saveInCartAction,deleteItemCartAction,setPriceHandler} = cartSlice.actions
 export default cartSlice.reducer

@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 function NavbarComponent() {
 
     const {totalProduct} = useSelector(state=>state.cartStore)
+    const {favoriteTotal} = useSelector(state=>state.favoriteStore)
 
 
   return <div className=''>
@@ -56,9 +57,9 @@ function NavbarComponent() {
                 <li className='flex-center gap-2'>
                    <div className='flex-center'>
                    <CiHeart size={25} color='white'/>
-                   <span className='badge'>0</span>
+                   <span className='badge '>{favoriteTotal}</span>
                    </div>
-                    <Link to={'/'} className='text-whiteTextColor'>Favorite</Link>
+                    <Link to={'/favorite'} className='text-whiteTextColor'>Favorite</Link>
                 </li>
                 <li className='flex-center gap-2'>
                     <div className='flex-center'>

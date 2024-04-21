@@ -28,7 +28,7 @@ function CartItemComponentt({item,index}) {
         onClick={() => dispatch(setPriceHandler({increment:1, index}))}>+</button>
         <span className='px-2 py-1 bg-slate-300 text-[18px]'>{item.count}</span>
         <button className='px-2 py-1 bg-slate-300 text-[18px]'
-        onClick={()=>dispatch(setPriceHandler({increment:-1,index}))}>-</button>
+        onClick={()=>item.count > 0 && dispatch(setPriceHandler({increment:-1,index}))}>-</button>
     </div>
     <div>
         {/* cartTotal */}

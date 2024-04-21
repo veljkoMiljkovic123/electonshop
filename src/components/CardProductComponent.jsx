@@ -1,9 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { saveInCartAction } from "../store/cartSlice";
+import {motion} from "framer-motion"
 
 function CardProductComponent({ product,activeView }) {
+  const dispatch = useDispatch()
+  function handleAddToCart() {
+    dispatch(saveInCartAction(product))
+  }
+
   return (
+    <motion.div
+    whileHover={{scale:1.05}}
+    whileTap={{scale:1.1}}>
     <div className={activeView==="listView" ? "w-full  flex flex-row items-center justify-between border-mainBlue border-b pb-3" : "w-[300px] h-full border border-mainBlue rounded-lg flex flex-col items-center gap-3 cursor-pointer"}>
       <div className={activeView === 'listView'?'relative w-[100px] h-[100px]':'relative w-full'}>
         <img
@@ -24,14 +35,20 @@ function CardProductComponent({ product,activeView }) {
         readOnly
       />
       </div>
+      <div className="py-5 flex gap-3 items-center justify-center">
       <Link
         to={`/singleProduct/${product.id}`}
         className="bg-mainBlue px-4  text-whiteTextColor py-2 rounded-lg hover:bg-mainYellow transition-all mb-3"
       >
         View Detail
       </Link>
+
+      <Link to='/cart'  className="bg-mainBlue px-4  text-whiteTextColor py-2 rounded-lg hover:bg-mainYellow transition-all mb-3" onClick={handleAddToCart}>Add to Cart</Link>
+      </div>
+     
+
     </div>
-  );
+    </motion.div>);
 }
 
 export default CardProductComponent;
