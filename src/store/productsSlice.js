@@ -1,19 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
+// src/store/productsSlice.js
+import { createSlice } from "@reduxjs/toolkit";
 
-
+const initialState = {
+  allProducts: [], // Lista svih proizvoda
+  currentCategory: "allProducts", // Početna kategorija
+};
 
 const productsSlice = createSlice({
-    name: 'products',
-    initialState:{
-        allProducts: [],
+  name: "products",
+  initialState,
+  reducers: {
+    saveAllProductsAction: (state, action) => {
+      state.allProducts = action.payload; // Ažuriranje liste proizvoda
     },
-    reducers: {
-       saveAllProductsAction: (state, action) => {
-           console.log(action.payload);
-           state.allProducts = action.payload
-       } 
-    }
-})
+    setNewCategoryAction: (state, action) => {
+      state.currentCategory = action.payload; // Postavljanje nove kategorije
+    },
+  },
+});
 
-export const{saveAllProductsAction} = productsSlice.actions
-export default productsSlice.reducer
+export const { saveAllProductsAction, setNewCategoryAction } =
+  productsSlice.actions;
+export default productsSlice.reducer;

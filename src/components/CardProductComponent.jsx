@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 
-function CardProductComponent({ product }) {
+function CardProductComponentt({ product }) {
   return (
     <div className="flex flex-col items-center border-2 border-mainYellow gap-2 w-[300px] h-full rounded-lg cursor-pointer">
       <div className="relative w-full">
@@ -15,7 +15,6 @@ function CardProductComponent({ product }) {
       </div>
       <h2 className="font-bold text-xl text-mainBlue">{product.title}</h2>
       <span className="text-mainYellow text-lg">${product.price}</span>
-      {/* Rating===zvezdiice */}
       <Rating
         name="half-rating-read"
         defaultValue={product.rating}
@@ -24,7 +23,7 @@ function CardProductComponent({ product }) {
       />
       <Link
         to={`/singleProduct/${product.id}`}
-        className="bg-mainBlue px-4  text-whiteTextColor py-2 rounded-lg hover:bg-mainYellow transition-all mb-3"
+        className="bg-mainBlue px-4 text-whiteTextColor py-2 rounded-lg hover:bg-mainYellow transition-all mb-3"
       >
         View Detail
       </Link>
@@ -32,4 +31,4 @@ function CardProductComponent({ product }) {
   );
 }
 
-export default CardProductComponent;
+export default CardProductComponentt;
