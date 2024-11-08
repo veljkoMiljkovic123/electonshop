@@ -1,34 +1,61 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { saveInCartAction } from "../store/cartSlice";
+import {motion} from "framer-motion"
 
+function CardProductComponent({ product,activeView }) {
+  const dispatch = useDispatch()
+  function handleAddToCart() {
+    dispatch(saveInCartAction(product))
+  }
+
+<<<<<<< HEAD
 function CardProductComponentt({ product }) {
+=======
+>>>>>>> c683fde2d71bb2d1353d798a1229566d6a152c5c
   return (
-    <div className="flex flex-col items-center border-2 border-mainYellow gap-2 w-[300px] h-full rounded-lg cursor-pointer">
-      <div className="relative w-full">
+    <motion.div
+    whileHover={{scale:1.05}}
+    whileTap={{scale:1.1}}>
+    <div className={activeView==="listView" ? "w-full  flex flex-row items-center justify-between border-mainBlue border-b pb-3" : "w-[300px] h-full border border-mainBlue rounded-lg flex flex-col items-center gap-3 cursor-pointer"}>
+      <div className={activeView === 'listView'?'relative w-[100px] h-[100px]':'relative w-full'}>
         <img
           src={product.thumbnail}
           alt={product.title}
-          className="h-[150px] w-full object-cover rounded-t-lg"
+          className={activeView==="listView" ? "w-[100px] h-[100px] object-cover rounded-md":"w-full h-[200px] object-cover rounded-md"}
         />
         <div className="absolute inset-0 bg-black/45 hover:bg-transparent transition-all rounded-lg"></div>
       </div>
       <h2 className="font-bold text-xl text-mainBlue">{product.title}</h2>
       <span className="text-mainYellow text-lg">${product.price}</span>
+<<<<<<< HEAD
+=======
+      {/* Rating===zvezdiice */}
+      <div className="hidden lg:block">
+>>>>>>> c683fde2d71bb2d1353d798a1229566d6a152c5c
       <Rating
         name="half-rating-read"
         defaultValue={product.rating}
         precision={0.5}
         readOnly
       />
+      </div>
+      <div className="py-5 flex gap-3 items-center justify-center">
       <Link
         to={`/singleProduct/${product.id}`}
         className="bg-mainBlue px-4 text-whiteTextColor py-2 rounded-lg hover:bg-mainYellow transition-all mb-3"
       >
         View Detail
       </Link>
+
+      <Link to='/cart'  className="bg-mainBlue px-4  text-whiteTextColor py-2 rounded-lg hover:bg-mainYellow transition-all mb-3" onClick={handleAddToCart}>Add to Cart</Link>
+      </div>
+     
+
     </div>
-  );
+    </motion.div>);
 }
 
 export default CardProductComponentt;

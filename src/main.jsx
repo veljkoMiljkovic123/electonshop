@@ -18,9 +18,15 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 //Redux
+<<<<<<< HEAD
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import FavoritePage from "./pages/FavoritePage.jsx";
+=======
+import { Provider } from 'react-redux'
+import store from './store/store.js'
+import FavoritePage from './pages/FavoritePage.jsx'
+>>>>>>> c683fde2d71bb2d1353d798a1229566d6a152c5c
 
 const router = createBrowserRouter([
   {
@@ -41,6 +47,7 @@ const router = createBrowserRouter([
         element: <SingleProductPage />,
       },
       {
+<<<<<<< HEAD
         path: "/cart",
         element: <CartPage />,
       },
@@ -51,6 +58,15 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+=======
+        path:'/cart',
+        element:<CartPage />
+      },
+      {
+        path:'/favorite',
+        element:<FavoritePage />
+      }
+>>>>>>> c683fde2d71bb2d1353d798a1229566d6a152c5c
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
